@@ -1,0 +1,15 @@
+- name: Weblogic deployment
+
+  hosts: wls_hosts
+  become: true
+  become_user: ora_fmw
+
+  tasks:
+    - maven_artifact:
+       group_id: weblogic 
+       artifact_id: deployment 
+       version: 2.0.0
+       extension: war
+       repository_url: 'http://ec2-3-135-221-194.us-east-2.compute.amazonaws.com:8081/repository/maven-releases'
+       dest: /u01/app/stage/deployment-2.0.0
+
